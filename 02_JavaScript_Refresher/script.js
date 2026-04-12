@@ -50,24 +50,92 @@
 // console.log(promise)
 
 
-let promise1 = new Promise((resolve, reject) => {
-    console.log("Promise is pending right now")
-    setTimeout(() => {
-        resolve(true)
-    }, 5000)
-})
+// let promise1 = new Promise((resolve, reject) => {
+//     console.log("Promise is pending right now")
+//     setTimeout(() => {
+//         resolve(true)
+//     }, 5000)
+// })
 
-let promise2 = new Promise((resolve, reject) => {
-    console.log("Promise is pending right now")
-    setTimeout(() => {
-        reject(new Error("I am an error"))
-    }, 5000)
-})
+// let promise2 = new Promise((resolve, reject) => {
+//     console.log("Promise is pending right now")
+//     setTimeout(() => {
+//         reject(new Error("I am an error"))
+//     }, 5000)
+// })
 
-promise1.then(() => {
-    console.log("I got accepted")
-})
+// promise1.then(() => {
+//     console.log("I got accepted")
+// })
 
-promise2.catch((error) => {
-    console.log("Some error has occurred. Please reload the page!")
-})
+// promise2.catch((error) => {
+//     console.log("Some error has occurred. Please reload the page!")
+// })
+
+// let promise1 = new Promise((resolve, reject) => {
+//     console.log("This promise is yet to be fulfilled")
+//     setTimeout(() => {
+//         console.log("Promise Fulfilled")
+//         resolve(true)
+//     }, 5000)
+// })
+
+// promise1.then(() => {
+//     console.log("Task Done")
+// })
+
+// let promise2 = new Promise((resolve, reject) => {
+//     console.log("This promise is yet to be fulfilled")
+//     setTimeout(() => {
+//         reject(new Error("Promise fulfilled, but...."))
+//     }, 5000)
+// })
+
+// promise2.catch((error) => {
+//     console.log("An unexpected error occurred")
+// })
+
+// let promise1 = new Promise((resolve, reject) => {
+//     console.log("Fulfilling Promise 1 ....")
+//     setTimeout(() => {
+//         resolve(true)
+//     }, 5000)
+// })
+
+// promise1.then(() => {
+//     console.log("Promise Fulfilled")
+// })
+
+// let promise2 = new Promise((resolve, reject) => {
+//     console.log("Fulfilling Promise 2 ....")
+//     setTimeout(() => {
+//         reject(new Error("Something's wrong, I can feel it"))
+//     }, 5000)
+// })
+
+// promise2.catch((error) => {
+//     console.log("An unexpected error occurred")
+//     alert("The program will stop working now. Touch grass!")
+// })
+
+// let promise1 = new Promise((resolve, reject) => {
+//     console.log("Fulfilling Promise 1 ...")
+//     setTimeout(() => {
+//         resolve(true)
+//     }, 5000)
+// })
+
+// promise1.then(() => {
+//     console.log("Promise Fulfilled successfully")
+// })
+
+// let promise2 = new Promise((resolve, reject) => {
+//     console.log("Fulfilling Promise 2 ...")
+//     setTimeout(() => {
+//         reject(new Error())
+//     }, 5000)
+// })
+
+// promise2.catch((error) => {
+//     alert("An unexpected error has occurred")
+// })
