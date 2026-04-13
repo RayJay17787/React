@@ -265,18 +265,211 @@
 // })
 
 // Async/Await in JavaScript
-// Async functions always return a promise. Any function can be made into an Async function and return a promise.
+// Any function can be made into an Async function and return a promise.
+// Async functions always return a promise. Which means:
+// let p1 = new Promise((resolve, reject) => {"Code"}) == Function = async (parameter) => {return Promise}
 
-myFunc = async () => {
-    return "This is an Asynchronous Function"
+// myFunc = async () => {
+//     return "This is an Asynchronous Function"
+// }
+
+// myFunc().then((value) => {
+//     alert(value)
+// })
+
+// let myFunc = async () => {
+
+//     let karachiTemp = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve("27 C")
+//         }, 2000)
+//     })
+
+//     let bangaloreTemp = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve("25 C")
+//         }, 5000)
+//     })
+
+//     console.log("Fetching Karachi's Temperature. Please Wait...")
+//     let kT = await karachiTemp
+//     console.log(`Fetched Karachi's Temperature: ${kT}`)
+//     console.log("Fetching Bangalore's's Temperature. Please Wait...")
+//     let bT = await bangaloreTemp
+//     console.log(`Fetched Bangalore's Temperature: ${bT}`)
+//     return [kT, bT]
+// }
+
+// myFunc().then((value) => {console.log(value)})
+
+// let myFunc = async() => {
+//     let p1 = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve("Hi, what is your name?")
+//         }, 4000)
+//     })
+
+//     let p2 = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve("Hi, Rayyan. Nice to meet you!")
+//         }, 8000)
+//     })
+
+//     console.log("Fetching first promise...")
+//     let pr1 = await p1
+//     console.log(`First Promise says: ${pr1}`)
+//     console.log("Fetching second promise...")
+//     let pr2 = await p2
+//     console.log(`Second Promise says: ${pr2}`)
+
+//     return [pr1, pr2]
+// }
+
+// myFunc().then((value) => {console.log({value})})
+
+// let myFunc = async() => {
+//     let pr1;
+//     try{
+//         let p1 = new Promise((resolve, reject) => {
+//             setTimeout(() => {
+//                 resolve("What is your name?")
+//             }, 4000)
+//         })
+
+//         let p2 = new Promise((resolve, reject) => {
+//             setTimeout(() => {
+//                 reject(new Error("Error 404: Page not found :("))
+//             }, 8000)
+//         })
+
+//         console.log("Fetching Promise 1...")
+//         pr1 = await p1
+//         console.log(`Fetched successfully: ${pr1}`)
+//         console.log("Fetching Promise 2...")
+//         let pr2 = await p2
+
+//     } 
+//     catch(error){
+//         console.error(`An error has occurred: ${error}`)
+//         return [pr1, "Error Reported."]
+//     } finally {
+//         console.log("Fetching Complete")
+//     }
+// }
+
+// myFunc().then((value) => {
+//     console.log(value)
+// })
+
+// let myFunc = () => {
+//     let val = document.getElementById('val').value;
+//     let optBalance = 5000;
+//     let hasError = false;
+//     try{
+//         if(val >= optBalance){
+//             alert("Sufficient Balance")
+//         }
+//         else{
+//             throw new Error("Insufficient Balance")
+//         }
+//     } catch(error){
+//         hasError = true;
+//         alert(`${error}`)
+//         console.error(`${error}`)
+//     } finally{
+//         alert("Thankyou for using our bank app")
+//         if(hasError == true){
+//             console.log("Application Terminated with an error")
+//         }
+//         else{console.log("Application Terminated.")
+
+//         }
+//     }
+// }
+// myFunc(val)
+
+const myDetails = {
+    name: "Rayyan",
+    balance: 12000,
+    pin: 1234,
+    isLocked: false
 }
 
-myFunc().then((value) => {
-    alert(value)
-})
+let processWithdraw = (enteredPin, amount) => {
 
+    enteredPin = document.getElementById('val1').value
+    amount = document.getElementById('val2').value
 
+    alert("Please wait while we process your request...")
 
+    setTimeout(() => {
+        try{
+            if(myDetails.isLocked == true){throw new Error("Account Locked")}
+            if(enteredPin != myDetails.pin){throw new Error("Incorrect Pin")}
+            if(amount > myDetails.balance){throw new Error("Insufficient Funds")}
+    
+            alert(`Cash Withdrawn: ${amount}`)
+            myDetails.balance = myDetails.balance - amount
+            console.log(`Remaining Balance: ${myDetails.balance}`)
+            alert(`Withdraw Successfull. Remaining Balance: ${myDetails.balance}`)
+    
+        } catch(error){
+            console.error(`An error occurred: ${error.message}`)
+            alert(`${error.message}`)
+        } finally{
+            alert("Thank You For Using Our Service")
+            console.log("App Terminated")
+        }
+    }, 8000)
+}
+
+// let processWithdraw = (enteredPin, amount) => {
+
+//     amount = document.getElementById('val2').value
+//     enteredPin = document.getElementById('val1').value
+
+//     console.log("Processing Transaction. Please Wait...")
+//     setTimeout(() => {
+//         try{
+//             if(myDetails.isLocked == false){
+//                 console.log("Everything is correct. let's check the pin...")
+//             }
+//             else if(myDetails.isLocked == true){
+//                 throw new Error("Account Locked")
+//             }
+//         } catch(error){
+//             alert(`${error}`)
+//             console.error(error)
+//         }
+
+//         try{
+//             if(enteredPin == myDetails.pin){
+//                 console.log("Everything is correct. User should be able to withdraw now")
+//             }
+//             else{
+//                 throw new Error("Incorrect Pin")
+//             }
+//         } catch(error){
+//             alert(`${error}`)
+//             console.error(error)
+//         }
+
+//         try {
+//             if (amount <= myDetails.balance && enteredPin == myDetails.pin) {
+//                 let remBalance = myDetails.balance - amount
+//                 alert(`Withdrawal Complete! Remaining Balance: ${remBalance}`)
+//             }
+//             else {
+//                 throw new Error("Insufficient Balance or incorrect pin")
+//             }
+//         } catch (error) {
+//             alert(`${error}`)
+//             console.error(error)
+//         } finally {
+//             alert("Thank You For Using Our Application")
+//         }
+//     }, 2000)
+// }
 
 
 
