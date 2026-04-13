@@ -388,40 +388,40 @@
 // }
 // myFunc(val)
 
-const myDetails = {
-    name: "Rayyan",
-    balance: 12000,
-    pin: 1234,
-    isLocked: false
-}
+// const myDetails = {
+//     name: "Rayyan",
+//     balance: 12000,
+//     pin: 1234,
+//     isLocked: false
+// }
 
-let processWithdraw = (enteredPin, amount) => {
+// let processWithdraw = (enteredPin, amount) => {
 
-    enteredPin = document.getElementById('val1').value
-    amount = document.getElementById('val2').value
+//     enteredPin = document.getElementById('val1').value
+//     amount = document.getElementById('val2').value
 
-    alert("Please wait while we process your request...")
+//     alert("Please wait while we process your request...")
 
-    setTimeout(() => {
-        try{
-            if(myDetails.isLocked == true){throw new Error("Account Locked")}
-            if(enteredPin != myDetails.pin){throw new Error("Incorrect Pin")}
-            if(amount > myDetails.balance){throw new Error("Insufficient Funds")}
+//     setTimeout(() => {
+//         try{
+//             if(myDetails.isLocked == true){throw new Error("Account Locked")}
+//             if(enteredPin != myDetails.pin){throw new Error("Incorrect Pin")}
+//             if(amount > myDetails.balance){throw new Error("Insufficient Funds")}
     
-            alert(`Cash Withdrawn: ${amount}`)
-            myDetails.balance = myDetails.balance - amount
-            console.log(`Remaining Balance: ${myDetails.balance}`)
-            alert(`Withdraw Successfull. Remaining Balance: ${myDetails.balance}`)
+//             alert(`Cash Withdrawn: ${amount}`)
+//             myDetails.balance = myDetails.balance - amount
+//             console.log(`Remaining Balance: ${myDetails.balance}`)
+//             alert(`Withdraw Successfull. Remaining Balance: ${myDetails.balance}`)
     
-        } catch(error){
-            console.error(`An error occurred: ${error.message}`)
-            alert(`${error.message}`)
-        } finally{
-            alert("Thank You For Using Our Service")
-            console.log("App Terminated")
-        }
-    }, 8000)
-}
+//         } catch(error){
+//             console.error(`An error occurred: ${error.message}`)
+//             alert(`${error.message}`)
+//         } finally{
+//             alert("Thank You For Using Our Service")
+//             console.log("App Terminated")
+//         }
+//     }, 8000)
+// }
 
 // let processWithdraw = (enteredPin, amount) => {
 
@@ -471,9 +471,28 @@ let processWithdraw = (enteredPin, amount) => {
 //     }, 2000)
 // }
 
+// Filter, Map, and Reduce in JavaScript
 
+// let arr = [45, 23, 21]
+// let a = arr.map((value) => {
+//     console.log(value);
+//     return value * 2
+// })
+// console.log(a)
 
-
+let arr = [10, 25, 30, 45, 50, 60]
+let a = arr.filter((value) => {
+    try{
+        if(value %2 == 0){
+            return `Values divisible by 2: ${value % 2 == 0}`
+        } else if(value %2 != 0){
+            throw new Error(`This value is not divible by 2: ${value}`)
+        }
+    } catch(error){
+        console.log(error.message)
+    }
+})
+console.log(a)
 
 
 
