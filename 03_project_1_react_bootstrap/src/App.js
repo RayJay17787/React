@@ -1,11 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-import Navbar from './nav'
+import Navbar from './Components/Navbar'
+import TypeFace_logo from './Components/TypeFace_logo'
+
+let TermObj = {
+  home: "Home",
+  about: `About Us`,
+  contact: "Contact Us"
+}
 
 function App() {
   return (
     <>
-    <Navbar />
+    <Navbar title = {<TypeFace_logo />} navOption1 = {TermObj.home} navOption2 = {<>About <TypeFace_logo /></>} navOption3 = {TermObj.contact}/>
     </>
   );
 }
