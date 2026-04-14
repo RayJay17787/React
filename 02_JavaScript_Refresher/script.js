@@ -480,20 +480,40 @@
 // })
 // console.log(a)
 
-let arr = [10, 25, 30, 45, 50, 60]
-let a = arr.filter((value) => {
-    try{
-        if(value %2 == 0){
-            return `Values divisible by 2: ${value % 2 == 0}`
-        } else if(value %2 != 0){
-            throw new Error(`This value is not divible by 2: ${value}`)
-        }
-    } catch(error){
-        console.log(error.message)
-    }
-})
-console.log(a)
+// let arr = [10, 25, 30, 45, 50, 60]
+// let a = arr.filter((value) => {
+//     try{
+//         if(value %2 == 0){
+//             return `Values divisible by 2: ${value % 2 == 0}`
+//         } else if(value %2 != 0){
+//             throw new Error(`This value is not divible by 2: ${value}`)
+//         }
+//     } catch(error){
+//         console.log(error.message)
+//     }
+// })
+// console.log(a)
 
+// let myObj = {
+//     name: "Rayyan",
+//     walk(){
+//         return{
+//             steps: 200,
+//             location: "Karachi"
+//         }
+//     },
+//     talk(){
+//         return{
+//             language: "Urdu",
+//             proficiency: "Native"
+//         }
+//     }
+// }
+
+// let {steps, location} = myObj.walk()
+// console.log(`Has walked over ${steps} steps`)
+// let {language, proficiency} = myObj.talk()
+// console.log(`Talks in ${language}`)
 
 
 
