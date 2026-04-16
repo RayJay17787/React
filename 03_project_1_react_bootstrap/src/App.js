@@ -6,18 +6,12 @@ import TextForm from './Components/TextForm'
 
 function App() {
   return (
-    <>
-    <Navbar title = {<TypeFace_logo />} navOption1 = {"Home"} navOption2 = {<>About <TypeFace_logo/></>} navOption3 = {"Contact Us"}/>
-    <TextForm heading = "Enter Text To Analyze"/>
-
-
-
-
-
-
-
-
-    </>
+    <div>
+      <Navbar title={<TypeFace_logo />} navOption1={"Home"} navOption2={<>About <TypeFace_logo /></>} navOption3={"Contact Us"} />
+      <div className='container col-12 col-md-10'>
+        <TextForm heading="Enter Text To Analyze" />
+      </div>
+    </div>
   );
 }
 

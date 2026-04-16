@@ -1,13 +1,12 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import TypeFace_logo from './TypeFace_logo'
 
 
 export default function TextForm({
     heading = "Default Heading Here"
-})
-{
-    const [text, setText] = useState()
-    
+}) {
+    const [text, setText] = useState("")
+
     const handleCapClick = () => { // One per functionality (Functionality is determined by an operation trigger by a button)
         console.log("Uppercase was used")
         let newText = text.toUpperCase();
@@ -21,41 +20,60 @@ export default function TextForm({
     }
 
     const handleTitClick = () => {
-        console.log("Title case was triggered")
-        let slicedText = text.slice(1).toLowerCase()
-        let newText = text.charAt(0).toUpperCase() + slicedText
+        console.log("Titlecase was triggered")
+        let lowText = text.slice(1).toLowerCase()
+        let newText = text.charAt(0).toUpperCase() + lowText
         setText(newText)
     }
 
-    const handleOnChange = (event) => { // One per text field
-        console.log("On Change")
+    const handleClearText = () => {
+        console.log("Text Cleared")
+        setText("")
+    }
+
+    const handleOnChange = (event) => {
         setText(event.target.value)
     }
 
     // text = "TEXT IS HERE" -----> This is the wrong way!
     // setText("TEXT IS HERE") -----> This is the correct way!
-    
+
     return (
         <div>
-            <div className="container mt-5 mb-4 px-5">
-                <h1 className='text-center'>{<>{heading} with <span style = {{color: "#0d6efd"}}><TypeFace_logo/></span></>}</h1>
-                <div className="card px-5 mx-5" style={{border: "0"}}>
-                    <span className="card-body px-5 mx-5">
-                        <div className="mt-4 mb-4 px-5">
+            <div className="container mt-5 mb-4">
+                <h1 className='text-center px-md-6'>{<>{heading} with <span style={{ color: "#0d6efd" }}><TypeFace_logo /></span></>}</h1>
+                <div className="card px-md-5 mx-md-5" style={{ border: "0" }}>
+                    <div className="card-body">
+                        <div className="mt-4 mb-4 px-md-5">
                             <div className="text-center mb-2">
-                            <label htmlFor="myBox" className="form-label">Enter Your Text</label>
+                                <label htmlFor="myBox" className="form-label">Enter Your Text</label>
                             </div>
                             <textarea placeholder='Enter Text Here' value={text} onChange={handleOnChange} className="form-control shadow-sm" id="myBox" rows="12"></textarea>
                         </div>
-                        <div className="mx-5 d-flex justify-content-center gap-4">   
-                        <button onClick={handleCapClick} className="btn btn-primary">Convert to Uppercase with {<TypeFace_logo/>}</button>
-                        <button onClick={handleLowClick} className="btn btn-primary">Convert to Lowercase with {<TypeFace_logo/>}</button>
-                        <button onClick={handleTitClick} className="btn btn-primary">Convert to Titlecase with {<TypeFace_logo/>}</button>
+                        <div className="d-flex flex-wrap justify-content-center gap-2 px-md-6 mb-4">
+                            <button onClick={handleCapClick} className="btn btn-primary w-auto">Convert to Uppercase with {<TypeFace_logo />}</button>
+                            <button onClick={handleLowClick} className="btn btn-primary w-auto">Convert to Lowercase with {<TypeFace_logo />}</button>
+                            <button onClick={handleTitClick} className="btn btn-primary w-auto">Convert to Titlecase with {<TypeFace_logo />}</button>
+                            <button onClick={handleClearText} className="btn btn-primary w-auto">Clear all text with {<TypeFace_logo />}</button>
                         </div>
-                    </span>
+                    </div>
+                </div>
+            </div>
+            <div className="container mt-5 mb-4 px-md-5">
+                <div className="row justify-content-center">
+                    <div className="col-12 col-md-10">
+                        <h1 className="text-center mt-3">Your Text Summary</h1>
+                        <div className="d-flex flex-wrap justify-content-center gap-5 mt-md-4">
+                            <p>{text.split(" ").length} words</p>
+                            <p>{text.length} characters</p>
+                            <p>Time to read this text: {0.008 * (text.split(" ").length)} minutes</p>
+                        </div>
+                        <div className="mt-3 px-md-10">
+                            <textarea placeholder='Preview Your Text Here' value={text} className="form-control shadow-sm" id="myBox" rows="4" readOnly></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     )
 }
-

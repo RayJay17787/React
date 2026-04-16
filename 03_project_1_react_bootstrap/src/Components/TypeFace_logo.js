@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function NewTitle(){
   return(
-    <span>
+    <span className='typeface-logo-class'>
       <i>TEXT</i><b>FORMER</b>
     </span>
   )
