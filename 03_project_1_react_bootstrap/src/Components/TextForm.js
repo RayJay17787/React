@@ -6,7 +6,7 @@ export default function TextForm({
     heading = "Default Heading Here"
 })
 {
-    const [text, setText] = useState("Enter Text Here")
+    const [text, setText] = useState()
     
     const handleCapClick = () => { // One per functionality (Functionality is determined by an operation trigger by a button)
         console.log("Uppercase was used")
@@ -22,7 +22,8 @@ export default function TextForm({
 
     const handleTitClick = () => {
         console.log("Title case was triggered")
-        let newText = text.charAt(0).toUpperCase() + text.slice(1)
+        let slicedText = text.slice(1).toLowerCase()
+        let newText = text.charAt(0).toUpperCase() + slicedText
         setText(newText)
     }
 
@@ -44,7 +45,7 @@ export default function TextForm({
                             <div className="text-center mb-2">
                             <label htmlFor="myBox" className="form-label">Enter Your Text</label>
                             </div>
-                            <textarea value={text} onChange={handleOnChange} className="form-control shadow-sm" id="myBox" rows="12"></textarea>
+                            <textarea placeholder='Enter Text Here' value={text} onChange={handleOnChange} className="form-control shadow-sm" id="myBox" rows="12"></textarea>
                         </div>
                         <div className="mx-5 d-flex justify-content-center gap-4">   
                         <button onClick={handleCapClick} className="btn btn-primary">Convert to Uppercase with {<TypeFace_logo/>}</button>
