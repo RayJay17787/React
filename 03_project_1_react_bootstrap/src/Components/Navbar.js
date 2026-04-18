@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import About from './About'
 import SunIcon from './SunIcon'
 import MoonIcon from './MoonIcon'
+import Alert from './Alert'
 
 export default function Navbar({
     title = "Set Title Here",
@@ -10,7 +11,8 @@ export default function Navbar({
     navOption2 = "Navbar Option",
     navOption3 = "Navbar Option",
     isSun = true,
-    toggleIcon = true
+    toggleIcon = true,
+    alert = null
 }) 
 {
     // const [isSun, setIsSun] = useState(true)

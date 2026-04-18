@@ -18,6 +18,7 @@ export default function TextForm({
 
     const handleLowClick = () => {
         console.log("Lowercase was triggered")
+        alert('')
         let newText = text.toLowerCase()
         setText(newText)
     }
