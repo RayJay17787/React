@@ -3,7 +3,10 @@ import TypeFace_logo from './TypeFace_logo'
 
 
 export default function TextForm({
-    heading = "Default Heading Here"
+    heading = "Default Heading Here",
+    color = "white",
+    bgColor = 'black',
+    isSun = true
 }) {
     const [text, setText] = useState("")
 
@@ -40,28 +43,28 @@ export default function TextForm({
 
     return (
         <div>
-            <div className="container mt-5 mb-4">
-                <h1 className='text-center px-md-6'>{<>{heading} with <span style={{ color: "#0d6efd" }}><TypeFace_logo /></span></>}</h1>
-                <div className="card px-md-5 mx-md-5" style={{ border: "0" }}>
-                    <div className="card-body">
+            <div className="container mt-5 mb-4" style={{color: isSun ? 'black' : 'white'}}>
+                <h1 className='text-center px-md-6'>{<><span style={{color: isSun ? 'black' : 'white'}}>{heading} with</span> <span style={{ color: isSun ? "#0d6efd" : "#007acc" }}><TypeFace_logo /></span></>}</h1>
+                <div className="card px-md-5 mx-md-5" style={{ backgroundColor: isSun ? 'white' : bgColor, border: "0" }}>
+                    <div className="card-body" style={{backgroundColor: isSun ? 'white' : bgColor}}>
                         <div className="mt-4 mb-4 px-md-5">
                             <div className="text-center mb-2">
-                                <label htmlFor="myBox" className="form-label">Enter Your Text</label>
+                                <label htmlFor="myBox" className="form-label" style={{color: isSun ? "black" : color}}>Enter Your Text</label>
                             </div>
-                            <textarea placeholder='Enter Text Here' value={text} onChange={handleOnChange} className="form-control shadow-sm" id="myBox" rows="12"></textarea>
+                            <textarea style = {{backgroundColor: isSun ? 'white' : '#eaeaea'}} placeholder='Enter Text Here' value={text} onChange={handleOnChange} className="form-control shadow-sm" id="myBox" rows="12"></textarea>
                         </div>
-                        <div className="d-flex flex-wrap justify-content-center gap-2 px-md-6 mb-4">
-                            <button onClick={handleCapClick} className="btn btn-primary w-auto">Convert to Uppercase with {<TypeFace_logo />}</button>
-                            <button onClick={handleLowClick} className="btn btn-primary w-auto">Convert to Lowercase with {<TypeFace_logo />}</button>
-                            <button onClick={handleTitClick} className="btn btn-primary w-auto">Convert to Titlecase with {<TypeFace_logo />}</button>
-                            <button onClick={handleClearText} className="btn btn-primary w-auto">Clear all text with {<TypeFace_logo />}</button>
+                        <div className="d-flex flex-wrap justify-content-center gap-2 px-md-6 mb-4" style={{color: isSun ? 'black' : 'white'}}>
+                            <button onClick={handleCapClick} className={`btn ${isSun ? 'btn-primary' : 'btn-dark'} w-auto`}>Convert to Uppercase with {<TypeFace_logo />}</button>
+                            <button onClick={handleLowClick} className={`btn ${isSun ? 'btn-primary' : 'btn-dark'} w-auto`}>Convert to Lowercase with {<TypeFace_logo />}</button>
+                            <button onClick={handleTitClick} className={`btn ${isSun ? 'btn-primary' : 'btn-dark'} w-auto`}>Convert to Titlecase with {<TypeFace_logo />}</button>
+                            <button onClick={handleClearText} className={`btn ${isSun ? 'btn-primary' : 'btn-dark'} w-auto`}>Clear all text with {<TypeFace_logo />}</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="container mt-5 mb-4 px-md-5">
-                <div className="row justify-content-center">
-                    <div className="col-12 col-md-10">
+            <div className="container mt-5 mb-4 px-md-5" style={{color: isSun ? 'black' : 'white'}}>
+                <div className="row justify-content-center" style={{color: isSun ? 'black' : 'white'}}>
+                    <div className="col-12 col-md-10" style={{color: isSun ? 'black' : 'white'}}>
                         <h1 className="text-center mt-3">Your Text Summary</h1>
                         <div className="d-flex flex-wrap justify-content-center gap-5 mt-md-4">
                             <p>{text.split(" ").length} words</p>
@@ -69,7 +72,7 @@ export default function TextForm({
                             <p>Time to read this text: {0.008 * (text.split(" ").length)} minutes</p>
                         </div>
                         <div className="mt-3 px-md-10">
-                            <textarea placeholder='Preview Your Text Here' value={text} className="form-control shadow-sm" id="myBox" rows="4" readOnly></textarea>
+                            <textarea style = {{backgroundColor: isSun ? 'white' : '#eaeaea'}} placeholder='Preview Your Text Here' value={text} className="form-control shadow-sm" id="myBox" rows="4" readOnly></textarea>
                         </div>
                     </div>
                 </div>
